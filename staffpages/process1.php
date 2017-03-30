@@ -7,7 +7,7 @@
  */
 
 session_start();
-require_once "dbaccess.php";
+require_once "../dbaccess.php";
 var_dump($_POST['hi']);
 
 $array;
@@ -34,4 +34,4 @@ while ($checklist_row = mysql_fetch_array($checklist_result)) {
 
 ?>
 
-<meta http-equiv=refresh content="0.00005; url=staffdashboard.php">
+<!--<meta http-equiv=refresh content="0.00005; url=staffemployee.php">-->

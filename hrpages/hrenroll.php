@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <?php
-require_once 'ExternalHead.php';
+require_once '../outline/ExternalHead.php';
 session_start();
-require_once "dbaccess.php";
+require_once "../dbaccess.php";
 ?>
 <body class="hold-transition skin-red sidebar-mini">
 
@@ -12,8 +12,8 @@ require_once "dbaccess.php";
 
     <!--    Include Navigation Bar and Side Bar-->
     <?php
-    require_once 'ExternalHeader.php';
-    require_once 'ExternalSidebarHr.php';
+    require_once '../outline/ExternalHeader.php';
+    require_once '../outline/ExternalSidebarHr.php';
     ?>
 
 
@@ -312,12 +312,12 @@ require_once "dbaccess.php";
 <?php
 
 if(isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['password']) && isset($_POST['supervisor'])){
-    require_once "dbaccess.php";
+    require_once "../dbaccess.php";
 
     echo mysql_query("insert into employee values('','','".$_POST['firstName']."','".$_POST['lastName']."','".$_POST['password']."','created','".$_POST['supervisor']."')");
 
 //    echo mysql_query("SELECT LAST_INSERT_ID() ;");
-    $index = "hrdashboardOld.php";
+    $index = "hremployee.php";
     echo '<script language="javascript">';
     echo "window.location.href='$index';";
     echo '</script>';
@@ -329,7 +329,7 @@ if(isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['pass
 
 
 <?php
-require_once 'ExternalFoot.php';
+require_once '../outline/ExternalFoot.php';
 ?>
 </body>
 </html>

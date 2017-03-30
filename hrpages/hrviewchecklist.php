@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <?php
-require_once 'ExternalHead.php';
+require_once '../outline/ExternalHead.php';
 session_start();
-require_once "dbaccess.php";
+require_once "../dbaccess.php";
 ?>
 <body class="hold-transition skin-red sidebar-mini">
 
@@ -12,8 +12,8 @@ require_once "dbaccess.php";
 
     <!--    Include Navigation Bar and Side Bar-->
     <?php
-    require_once 'ExternalHeader.php';
-    require_once 'ExternalSidebarHr.php';
+    require_once '../outline/ExternalHeader.php';
+    require_once '../outline/ExternalSidebarHr.php';
     ?>
 
 
@@ -21,98 +21,46 @@ require_once "dbaccess.php";
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Employee Status
+                Enroll a New Employee
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-toggle-right"></i> Home</a></li>
-                <li class="active">Employee Status</li>
+                <li><a href="#">Employee Operation</a></li>
+                <li class="active">Enroll New Employee</li>
             </ol>
         </section>
 
         <section class="content">
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">All Employees</h3>
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">New Employee Information</h3>
+                            <br>
+                            <small>Please input the new employee information according to the instruction. You can create
+                                a new employee and manually start the check in process by clicking submit button or create a new
+                                employee and check in process automatically. NetID is not a required field. You can update the NetID
+                                information later in the system.</small>
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <tr>
-                                    <th>NetID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Supervisor</th>
-                                    <th>Status</th>
-                                    <th>Operations</th>
-                                </tr>
-                                <?php
-                                $employee_result = mysql_query("select * from employee;");
-                                while ($employee_row = mysql_fetch_array($employee_result)) {
-                                    ?>
-                                    <tr>
-                                        <td>
-                                            <?php echo $employee_row['netId'];?>
-                                        </td>
-                                        <td>
-                                            <?php echo $employee_row['firstName'];?>
-                                        </td>
-                                        <td>
-                                            <?php echo $employee_row['lastName'];?>
-                                        </td>
-                                        <td>
-                                            <?php
-                                            $supervisor_Id = $employee_row['supervisorId'];
-                                            $supervisor_name_result = mysql_query("select * from staff where id = '".$supervisor_Id."'");
-                                            $supervisor_name_row = mysql_fetch_array($supervisor_name_result);
-                                            $supervisor_name = $supervisor_name_row['firstName'];
-                                            echo $supervisor_name;
-                                            ?>
-                                        </td>
-                                        <td>
-                                            <?php
-                                                if ($employee_row['status'] == "entering") {
-                                                    ?>
-                                                    <span class="label label-warning">In Entering Process</span>
-                                                    <?php
-                                                } elseif ($employee_row['status'] == "created") {
-                                                    ?>
-                                                    <span class="label label-info">Just Created (Need to Start Entering Process)</span>
-                                                    <?php
-                                                }
-                                            ?>
+                        <?php
+                            $result = mysql_query("select * from checklist_enter_entry;");
+                             while ($row = mysql_fetch_array($result)){
+                                    echo $row['content'];
+                                    echo '</br>';
+                            }
 
 
+                        ?>
 
-                                        </td>
-                                        <td>
-                                            <?php
-                                            if ($employee_row['status'] == "created") {
-                                                ?>
-
-                                                <button onclick="location.href='initialenteringprocess.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-success">Start Entering Process</button>
-                                                <button onclick="location.href='hrupdate.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-info">Update Information</button>
-
-                                                <?php
-                                            } else {
-                                                ?>
-                                                <button onclick="location.href='hrupdate.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-info">Update Information</button>
-                                                <?php
-                                            }
-                                            ?>
-
-                                        </td>
-                                    </tr>
-                                    <?php
-                                }
-                                ?>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
+
                 </div>
+                <!--/.col (left) -->
+
             </div>
             <!-- /.row -->
         </section>
@@ -326,8 +274,11 @@ require_once "dbaccess.php";
 </div>
 <!-- ./wrapper -->
 
+
+
+
 <?php
-require_once 'ExternalFoot.php';
+require_once '../outline/ExternalFoot.php';
 ?>
 </body>
 </html>

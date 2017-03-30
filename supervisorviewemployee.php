@@ -29,7 +29,7 @@ require_once "dbaccess.php";
 ?>
     <br>
 
-    <form action="process1.php?eid=<?php echo $_GET['eid'];?>" method="post">
+    <form action="staffpages/process1.php?eid=<?php echo $_GET['eid'];?>" method="post">
         <?
 
         $checklist_result = mysql_query("select * from checklist_enter_entry;");

@@ -76,7 +76,7 @@ if(isset($_POST['SnetId']) && isset($_POST['Spassword'])){
         echo isset($_SESSION['netId']);
 
         if ($departmentId == 1) {
-            $index = "hrdashboard.php";
+            $index = "hrpages/hrdashboard.php";
             echo '<script language="javascript">';
             echo "window.location.href='$index';";
             echo '</script>';
@@ -86,7 +86,7 @@ if(isset($_POST['SnetId']) && isset($_POST['Spassword'])){
             echo "window.location.href='$index';";
             echo '</script>';
         } else {
-            $index = "staffdashboard.php";
+            $index = "staffpages/staffdashboard.php";
             echo '<script language="javascript">';
             echo "window.location.href='$index';";
             echo '</script>';

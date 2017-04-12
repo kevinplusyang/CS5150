@@ -80,6 +80,19 @@ require_once "../dbaccess.php";
                                                 ?>
                                                 <span class="label label-info">Just Created (Need to Start Entering Process)</span>
                                                 <?php
+                                            } elseif ($employee_row['status'] == "stable") {
+                                                ?>
+                                                <span class="label label-success">Stable</span>
+                                                <?php
+
+                                            } else if ($employee_row['status'] == "exitingVisable") {
+                                                ?>
+                                                <span class="label label-info">In Exiting Process. Employee Awares</span>
+                                                <?php
+                                            } else if ($employee_row['status'] == "exitingInvisable") {
+                                                ?>
+                                                <span class="label label-info">In Exiting Process. Employee not Awares</span>
+                                                <?php
                                             }
                                             ?>
 
@@ -87,7 +100,16 @@ require_once "../dbaccess.php";
 
                                         </td>
                                         <td>
-                                            <button onclick="location.href='viewdetails.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-info">View Detail</button>
+
+                                            <button onclick="location.href='viewdetails.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-info">View Entering Detail</button>
+
+                                            <?php
+                                                if ($employee_row['status'] == "exitingInvisable" || $employee_row['status'] == "exitingVisable") {
+                                                    ?>
+                                                    <button onclick="location.href='exitchecklist.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-warning">View Exiting Detail</button>
+                                                    <?php
+                                                }
+                                            ?>
 
                                         </td>
                                     </tr>

@@ -35,7 +35,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="../hrpages/hrenroll.php"><i class="fa fa-toggle-right"></i>Enroll New Employee</a></li>
-                    <li><a href="pages/layout/boxed.html"><i class="fa fa-toggle-left"></i>Leave Employee</a></li>
+                    <li><a href="../hrpages/leaveemployee.php"><i class="fa fa-toggle-left"></i>Exit Employee</a></li>
                 </ul>
             </li>
 

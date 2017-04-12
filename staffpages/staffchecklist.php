@@ -85,12 +85,10 @@ require_once "../dbaccess.php";
 
                                 </div>
 
-                                <form  role="form" action="process1.php?eid=<?php echo $_GET['eid'];?>" method="post">
+                                <form  role="form" action="process1.php?eid=<?php echo $_GET['eid'];?>&cid=<?php echo $_GET['cid'];?>" method="post">
 
 
                                     <div class="box-body" >
-
-
 
                                         <?
 

@@ -1,3 +1,12 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: mingyang
+ * Date: 4/7/17
+ * Time: 9:52 AM
+ */
+?>
+
 <!DOCTYPE html>
 <html>
 <?php
@@ -21,103 +30,102 @@ require_once "../dbaccess.php";
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Employee Status
+                Select Exiting Employee Supervisors
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-toggle-right"></i> Home</a></li>
-                <li class="active">Employee Status</li>
+                <li><a href="#">Employee Operation</a></li>
+                <li class="active">Exit Employee</li>
             </ol>
         </section>
 
         <section class="content">
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">All Employees</h3>
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Exiting an Old Employee</h3>
+                            <br>
+                            <small>Please select a people in each department who will be in charge of the employee's exiting process.</small>
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <tr>
-                                    <th>NetID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Supervisor</th>
-                                    <th>Status</th>
-                                    <th>Operations</th>
-                                </tr>
-                                <?php
-                                $employee_result = mysql_query("select * from employee;");
-                                while ($employee_row = mysql_fetch_array($employee_result)) {
-                                    ?>
-                                    <tr>
-                                        <td>
-                                            <?php echo $employee_row['netId'];?>
-                                        </td>
-                                        <td>
-                                            <?php echo $employee_row['firstName'];?>
-                                        </td>
-                                        <td>
-                                            <?php echo $employee_row['lastName'];?>
-                                        </td>
-                                        <td>
-                                            <?php
-                                            $supervisor_Id = $employee_row['supervisorId'];
-                                            $supervisor_name_result = mysql_query("select * from staff where id = '".$supervisor_Id."'");
-                                            $supervisor_name_row = mysql_fetch_array($supervisor_name_result);
-                                            $supervisor_name = $supervisor_name_row['firstName'];
-                                            echo $supervisor_name;
+                        <!-- form start -->
+                        <form role="form" action="initialexitingforstaff2.php?eid=<?php echo $_GET['eid'];?>" method="post">
+                            <div class="box-body" >
+
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Assign an HR</label>
+
+                                    <select class="form-control" name="hr">
+                                        <?php
+
+                                        $supervisor_result = mysql_query("select * from staff where departmentId = 1;");
+                                        while ($supervisor_row = mysql_fetch_array($supervisor_result)) {
                                             ?>
-                                        </td>
-                                        <td>
+                                            <option value="<?php echo $supervisor_row['id']?>"> <?php echo $supervisor_row['firstName']?> </option>
                                             <?php
-                                                if ($employee_row['status'] == "entering") {
-                                                    ?>
-                                                    <span class="label label-warning">In Entering Process</span>
-                                                    <?php
-                                                } elseif ($employee_row['status'] == "created") {
-                                                    ?>
-                                                    <span class="label label-info">Just Created (Need to Start Entering Process)</span>
-                                                    <?php
-                                                }  elseif ($employee_row['status'] == "stable") {
-                                                    ?>
-                                                    <span class="label label-success">Stable</span>
-                                                    <?php
+                                        }
+                                        ?>
+                                    </select>
 
-                                                }
+                                    <label for="exampleInputPassword1">Assign an IT Department</label>
+                                    <select class="form-control" name="it">
+                                        <?php
+
+                                        $supervisor_result = mysql_query("select * from staff where departmentId = 2;");
+                                        while ($supervisor_row = mysql_fetch_array($supervisor_result)) {
                                             ?>
-
-
-
-                                        </td>
-                                        <td>
+                                            <option value="<?php echo $supervisor_row['id']?>"> <?php echo $supervisor_row['firstName']?> </option>
                                             <?php
-                                            if ($employee_row['status'] == "created") {
-                                                ?>
+                                        }
+                                        ?>
+                                    </select>
 
-                                                <button onclick="location.href='initialenteringprocess.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-success">Start Entering Process</button>
-                                                <button onclick="location.href='hrupdate.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-info">Update Information</button>
+                                    <label for="exampleInputPassword1">Assign a Financial Department</label>
+                                    <select class="form-control" name="fd">
+                                        <?php
 
-                                                <?php
-                                            } else {
-                                                ?>
-                                                <button onclick="location.href='hrupdate.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-info">Update Information</button>
-                                                <?php
-                                            }
+                                        $supervisor_result = mysql_query("select * from staff where departmentId = 3;");
+                                        while ($supervisor_row = mysql_fetch_array($supervisor_result)) {
                                             ?>
+                                            <option value="<?php echo $supervisor_row['id']?>"> <?php echo $supervisor_row['firstName']?> </option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
 
-                                        </td>
-                                    </tr>
-                                    <?php
-                                }
-                                ?>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
+                                    <label for="exampleInputPassword1">Assign an Supervisor</label>
+                                    <select class="form-control" name="sp">
+                                        <?php
+
+                                        $supervisor_result = mysql_query("select * from staff where departmentId = 4;");
+                                        while ($supervisor_row = mysql_fetch_array($supervisor_result)) {
+                                            ?>
+                                            <option value="<?php echo $supervisor_row['id']?>"> <?php echo $supervisor_row['firstName']?> </option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Start Exiting Process without Letting Employee Know</button>
+                            </div>
+                        </form>
+
+
                     </div>
                     <!-- /.box -->
+
                 </div>
+                <!--/.col (left) -->
+
             </div>
             <!-- /.row -->
         </section>
@@ -330,6 +338,25 @@ require_once "../dbaccess.php";
 
 </div>
 <!-- ./wrapper -->
+
+<?php
+
+if(isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['password']) && isset($_POST['supervisor'])){
+    require_once "../dbaccess.php";
+
+    echo mysql_query("insert into employee values('','','".$_POST['firstName']."','".$_POST['lastName']."','".$_POST['password']."','created','".$_POST['supervisor']."')");
+
+//    echo mysql_query("SELECT LAST_INSERT_ID() ;");
+    $index = "hremployee.php";
+    echo '<script language="javascript">';
+    echo "window.location.href='$index';";
+    echo '</script>';
+
+
+}
+
+?>
+
 
 <?php
 require_once '../outline/ExternalFoot.php';

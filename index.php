@@ -94,6 +94,43 @@ if(isset($_POST['SnetId']) && isset($_POST['Spassword'])){
 
 
     }
+
+    $sql_count = "select count(*) from employee where netId = '".$_POST['SnetId']."' and password='".$_POST['Spassword']."' ";
+    $result_count = mysql_query($sql_count);
+    $row_count = mysql_fetch_array( $result_count );
+    if($row_count[0]==0) {
+        $alertText = "Wrong Password or User Doesn't Exist";
+        echo '<script language="javascript">';
+        echo "alert('$alertText');";
+        echo "window.location.href='".$_SERVER['PHP_SELF']."';";
+        echo '</script>';
+    }else{
+        $result = mysql_query("select * from employee where netId = '".$_POST['SnetId']."' and password= '".$_POST['Spassword']."' ");
+        $row = mysql_fetch_array($result);
+
+        $netId = $row['netId'];
+        $firstName = $row['firstName'];
+        $lastName = $row['lastName'];
+        $userId = $row['id'];
+        $departmentId = $row['departmentId'];
+
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['netId'] = $netId;
+        $_SESSION['firstName'] = $firstName;
+        $_SESSION['lastName'] = $lastName;
+
+
+        echo isset($_SESSION['netId']);
+
+        $index = "employeepages/employeedashboard.php";
+        echo '<script language="javascript">';
+        echo "window.location.href='$index';";
+        echo '</script>';
+
+
+    }
+
+
 }
 ?>
 

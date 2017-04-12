@@ -72,20 +72,25 @@ require_once "../dbaccess.php";
                                         </td>
                                         <td>
                                             <?php
-                                                if ($employee_row['status'] == "entering") {
-                                                    ?>
-                                                    <span class="label label-warning">In Entering Process</span>
-                                                    <?php
-                                                } elseif ($employee_row['status'] == "created") {
-                                                    ?>
-                                                    <span class="label label-info">Just Created (Need to Start Entering Process)</span>
-                                                    <?php
-                                                }  elseif ($employee_row['status'] == "stable") {
-                                                    ?>
-                                                    <span class="label label-success">Stable</span>
-                                                    <?php
+                                            if ($employee_row['status'] == "entering") {
+                                                ?>
+                                                <span class="label label-warning">In Entering Process</span>
+                                                <?php
+                                            } elseif ($employee_row['status'] == "created") {
+                                                ?>
+                                                <span class="label label-info">Just Created (Need to Start Entering Process)</span>
+                                                <?php
+                                            }  elseif ($employee_row['status'] == "stable") {
+                                                ?>
+                                                <span class="label label-success">Stable</span>
+                                                <?php
 
-                                                }
+                                            }  elseif ($employee_row['status'] == "exitingVisable") {
+                                                ?>
+                                                <span class="label label-warning">In Exiting Process Employee Aware</span>
+                                                <?php
+
+                                            }
                                             ?>
 
 
@@ -93,19 +98,22 @@ require_once "../dbaccess.php";
                                         </td>
                                         <td>
                                             <?php
-                                            if ($employee_row['status'] == "created") {
+                                            if ($employee_row['status'] == "entering" || $employee_row['status'] == "stable") {
                                                 ?>
-
-                                                <button onclick="location.href='initialenteringprocess.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-success">Start Entering Process</button>
-                                                <button onclick="location.href='hrupdate.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-info">Update Information</button>
-
+                                                <button onclick="location.href='exitselection1.php?eid=<?php  echo $employee_row['id'];?>'" type="button" class="btn btn-block btn-success">Start Leaving Process and Notify Employee</button>
+                                                <button onclick="location.href='exitselection2.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-success">Start Leaving Process and Donot Notify Employee</button>
                                                 <?php
-                                            } else {
+                                            } else if ($employee_row['status'] == "exitingVisable") {
                                                 ?>
-                                                <button onclick="location.href='hrupdate.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-info">Update Information</button>
+                                                No operation supported
+                                                <?php
+                                            } else if ($employee_row['status'] == "exitingInvisable") {
+                                                ?>
+                                                <button onclick="location.href='notifyemployee.php?eid=<?php echo $employee_row['id']?>'" type="button" class="btn btn-block btn-success">Notify Employee</button>
                                                 <?php
                                             }
                                             ?>
+
 
                                         </td>
                                     </tr>

@@ -10,28 +10,30 @@ session_start();
 require_once "../dbaccess.php";
 var_dump($_POST['hi']);
 
-$array;
-$i = 0;
-$checklist_result = mysql_query("select * from checklist_enter_entry;");
+$checklist_result = mysql_query("select * from checklist_enter where employeeId = '".$_GET['eid']."' and category = '".$_GET['cid']."' ");
 while ($checklist_row = mysql_fetch_array($checklist_result)) {
-    $array[$i] = 0;
-    $i++;
+    if (in_array($checklist_row['entryId'], $_POST['hi'])) {
+        mysql_query("update checklist_enter set status = 1 where entryId = '".$checklist_row['entryId']."' and employeeId = '".$_GET['eid']."' and category = '".$_GET['cid']."'; ");
+    } else {
+        mysql_query("update checklist_enter set status = 0 where entryId = '".$checklist_row['entryId']."' and employeeId = '".$_GET['eid']."' and category = '".$_GET['cid']."'; ");
+
+    }
 }
-$array[$i] = 0;
 
-for ($i = 0; $i < sizeof($_POST['hi']);$i++) {
-    $array[$_POST['hi'][$i]] = 1;
-}
-
-var_dump($array);
-
-$checklist_result = mysql_query("select * from checklist_enter_entry;");
-$i = 1;
+$checklist_result = mysql_query("select * from checklist_enter where employeeId = '".$_GET['eid']."' ");
+$flag = 1;
 while ($checklist_row = mysql_fetch_array($checklist_result)) {
-    mysql_query("update checklist_enter set status = '".$array[$i]."' where entryId = '".$i."' and employeeId = '".$_GET['eid']."'; ");
-    $i++;
+    if ($checklist_row['status'] == 0) {
+        $flag = 0;
+    }
 }
+if ($flag == 1) {
+    mysql_query("update employee set status = 'stable' where id = '".$_GET['eid']."' ;");
+} else {
+    mysql_query("update employee set status = 'entering' where id = '".$_GET['eid']."' ;");
+}
+
 
 ?>
 
-<!--<meta http-equiv=refresh content="0.00005; url=staffemployee.php">-->
+<meta http-equiv=refresh content="0.00005; url=viewdetails.php?eid=<?php echo $_GET['eid'];?>">

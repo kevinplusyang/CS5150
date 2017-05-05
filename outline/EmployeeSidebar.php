@@ -9,7 +9,7 @@
             </div>
             <div class="pull-left info">
                 <p><?php echo $_SESSION['firstName'];?> <?php echo $_SESSION['lastName'];?></p>
-                <a href="#"><i class="fa fa-circle text-success"></i> HR</a>
+                <a href="#"><i class="fa fa-circle text-success"></i> Employee</a>
             </div>
         </div>
 
@@ -17,29 +17,24 @@
         <ul class="sidebar-menu">
 
             <li>
-                <a href="../hrpages/hrdashboard.php">
+                <a href="employeedashboard.php">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
 
             <li>
-                <a href="../hrpages/hremployee.php">
-                    <i class="fa fa-table"></i> <span>Employee Status</span>
+                <a href="mytask.php">
+                    <i class="fa fa-table"></i> <span>My Task</span>
                 </a>
             </li>
 
 
-            <li class=" treeview">
-                <a href="#">
-                    <i class="fa fa-user"></i> <span>Employee Operation</span> <i class="fa fa-angle-left pull-right"></i>
+
+            <li>
+                <a href="../hrpages/hrdashboard.php">
+                    <i class="fa fa-gear"></i> <span>Setting</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="../hrpages/hrenroll.php"><i class="fa fa-toggle-right"></i>Enroll New Employee</a></li>
-                    <li><a href="../hrpages/leaveemployee.php"><i class="fa fa-toggle-left"></i>Exit Employee</a></li>
-                </ul>
             </li>
-
-
         </ul>
     </section>
     <!-- /.sidebar -->

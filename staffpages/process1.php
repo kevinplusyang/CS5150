@@ -10,7 +10,8 @@ session_start();
 require_once "../dbaccess.php";
 var_dump($_POST['hi']);
 
-$checklist_result = mysql_query("select * from checklist_enter where employeeId = '".$_GET['eid']."' and category = '".$_GET['cid']."' ");
+$checklist_result = mysql_query("select * from checklist_enter where employeeId = '".$_GET['eid']."' and category = '".$_GET['cid']."'and departmentId = '".$_GET['did']."'  ");
+
 while ($checklist_row = mysql_fetch_array($checklist_result)) {
     if (in_array($checklist_row['entryId'], $_POST['hi'])) {
         mysql_query("update checklist_enter set status = 1 where entryId = '".$checklist_row['entryId']."' and employeeId = '".$_GET['eid']."' and category = '".$_GET['cid']."'; ");
@@ -36,4 +37,4 @@ if ($flag == 1) {
 
 ?>
 
-<meta http-equiv=refresh content="0.00005; url=viewdetails.php?eid=<?php echo $_GET['eid'];?>">
+<meta http-equiv=refresh content="0.00005; url=viewdetails.php?eid=<?php echo $_GET['eid'];?>&did=<?php echo $_GET['did'];?>">

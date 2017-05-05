@@ -16,7 +16,7 @@ $count = $checklist_row['count(*)'];
 $checklist_result = mysql_query("select * from checklist_enter_entry;");
 $i = 1;
 while ($checklist_row =  mysql_fetch_array($checklist_result)) {
-    mysql_query("insert into checklist_enter values('','".$_GET['eid']."','".$i."','".$checklist_row['category']."','0');");
+    mysql_query("insert into checklist_enter values('','".$_GET['eid']."','".$i."','".$checklist_row['category']."', '".$checklist_row['departmentId']."' ,'0');");
     $i++;
 }
 

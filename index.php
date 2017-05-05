@@ -65,14 +65,20 @@ if(isset($_POST['SnetId']) && isset($_POST['Spassword'])){
         $firstName = $row['firstName'];
         $lastName = $row['lastName'];
         $userId = $row['id'];
-        $departmentId = $row['departmentId'];
+
 
         $_SESSION['id'] = $row['id'];
         $_SESSION['netId'] = $netId;
         $_SESSION['firstName'] = $firstName;
         $_SESSION['lastName'] = $lastName;
         $_SESSION['userId'] = $userId;
-        $_SESSION['$departmentId'] = $departmentId;
+
+
+        $result2 = mysql_query("select * from worksIn where staffId = '".$row['id']."' ");
+        $row2 = mysql_fetch_array($result2);
+        $departmentId =  $row2['departmentId'];
+        $_SESSION['departmentId'] = $departmentId;
+
         echo isset($_SESSION['netId']);
 
         if ($departmentId == 1) {

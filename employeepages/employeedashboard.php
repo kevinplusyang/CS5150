@@ -12,8 +12,8 @@ require_once "../dbaccess.php";
 
     <!--    Include Navigation Bar and Side Bar-->
     <?php
-    require_once '../outline/ExternalHeader.php';
-    require_once '../outline/ExternalSidebarStaff.php';
+    require_once '../outline/EmployeeHeader.php';
+    require_once '../outline/EmployeeSidebar.php';
     ?>
 
 
@@ -34,86 +34,40 @@ require_once "../dbaccess.php";
         <section class="content">
             <!-- Info boxes -->
             <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-aqua"><i class="fa fa-child"></i></span>
 
-                        <div class="info-box-content">
-                            <span class="info-box-text">Employees in System</span>
-                            <span class="info-box-number">
-                                <?php
-                                $number_result = mysql_query("select count(*) from employee;");
-                                $number_row = mysql_fetch_array($number_result);
-                                echo $number_row['count(*)'];
-                                ?>
+                <?php
+                    $result = mysql_query("select * from employee where id = '".$_SESSION['id']."' ");
+                    $row = mysql_fetch_array($result);
+                    $status = $row['status'];
+                    if ($status == "exitingVisable") {
+                        ?>
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-aqua"><i class="fa fa-exclamation-triangle"></i></span>
+                                <a href="mytask.php">
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">You have a task pending</span>
+                                        <span class="info-box-number">Click to View
                             </span>
+                                    </div>
+                                </a>
+
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
                         </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-red"><i class="fa fa-users"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Supervisors in System</span>
-                            <span class="info-box-number">
-                                <?php
-                                $number_result = mysql_query("select count(*) from staff where departmentId = '4';");
-                                $number_row = mysql_fetch_array($number_result);
-                                echo $number_row['count(*)'];
-                                ?>
-                            </span>
+                        <?php
+                    } else {
+                        ?>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            No Operation Supported Now.
                         </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
+                        <?php
+                    }
+                ?>
 
-                <!-- fix for small devices only -->
-                <div class="clearfix visible-sm-block"></div>
 
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-green"><i class="glyphicon glyphicon-log-in"></i></span>
 
-                        <div class="info-box-content">
-                            <span class="info-box-text">Entering Employees</span>
-                            <span class="info-box-number">
-                               <?php
-                               $number_result = mysql_query("select count(*) from employee where status = 'entering';");
-                               $number_row = mysql_fetch_array($number_result);
-                               echo $number_row['count(*)'];
-                               ?>
-                            </span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-yellow"><i class="glyphicon glyphicon-log-out"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Exiting Employees</span>
-                            <span class="info-box-number">
-                                <?php
-                                $number_result = mysql_query("select count(*) from staff where departmentId = '4';");
-                                $number_row = mysql_fetch_array($number_result);
-                                echo $number_row['count(*)'];
-                                ?>
-                            </span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
             </div>
             <!-- /.row -->
         </section>

@@ -2,24 +2,26 @@
 /**
  * Created by PhpStorm.
  * User: mingyang
- * Date: 3/16/17
- * Time: 8:50 PM
+ * Date: 4/25/17
+ * Time: 1:39 PM
  */
+
 
 session_start();
 require_once "../dbaccess.php";
 var_dump($_POST['hi']);
 
-$checklist_result = mysql_query("select * from checklist_exit where employeeId = '".$_GET['eid']."' and category = '".$_GET['cid']."'and departmentId = '".$_GET['did']."' ");
+$checklist_result = mysql_query("select * from checklist_employee_exit where employeeId = '".$_SESSION['id']."'; ");
 
 while ($checklist_row = mysql_fetch_array($checklist_result)) {
     if (in_array($checklist_row['entryId'], $_POST['hi'])) {
-        mysql_query("update checklist_exit set status = 1 where entryId = '".$checklist_row['entryId']."' and employeeId = '".$_GET['eid']."' and category = '".$_GET['cid']."'; ");
+        mysql_query("update checklist_employee_exit set status = 1 where entryId = '".$checklist_row['entryId']."' and employeeId = '".$_SESSION['id']."'; ");
     } else {
-        mysql_query("update checklist_exit set status = 0 where entryId = '".$checklist_row['entryId']."' and employeeId = '".$_GET['eid']."' and category = '".$_GET['cid']."'; ");
-
+        mysql_query("update checklist_employee_exit set status = 0 where entryId = '".$checklist_row['entryId']."' and employeeId = '".$_SESSION['id']."'; ");
     }
 }
+
+
 
 $checklist_result = mysql_query("select * from checklist_exit where employeeId = '".$_GET['eid']."' ");
 $flag = 1;
@@ -56,8 +58,6 @@ if ($checklist_row['status'] == "exitingVisable" ) {
 }
 
 
-
-
 ?>
 
-<meta http-equiv=refresh content="0.00005; url=viewexitingdetail.php?eid=<?php echo $_GET['eid'];?>&did=<?php echo $_GET['did'];?>">
+<meta http-equiv=refresh content="0.00005; url=employeedashboard.php">

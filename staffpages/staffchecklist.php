@@ -90,19 +90,20 @@ require_once "../dbaccess.php";
 
                                     <div class="box-body" >
 
-                                        <?
+                                        <?php
 
                                         $checklist_result = mysql_query("select * from checklist_enter_entry where category = '".$_GET['cid']."' and departmentId = '".$_GET['did']."' ;");
                                         while ($checklist_row = mysql_fetch_array($checklist_result)) {
-                                            $checked_result = mysql_query("select * from checklist_enter where employeeId = '".$_GET['eid']."' and entryId = '".$checklist_row['id']."' ");
+                                            $checked_result = mysql_query("select * from checklist_enter where employeeId = '".$_GET['eid']."' and entryId = '".$checklist_row['id']."' ;");
                                             $checked_row = mysql_fetch_array($checked_result);
                                             if ($checked_row['status'] == 0) {
                                                 ?>
-                                                <input class="minimal" type="checkbox" name="hi[]" value="<?php echo $checklist_row['id'];?>"><?php echo $checklist_row['id'];?><?php echo $checklist_row['content'];?><br>
+                                                <input class="minimal" type="checkbox" name="hi[]" value="<?php echo $checklist_row['id'];?>"><?php echo $checklist_row['content'];?><br>
                                                 <?php
-                                            } else {
+                                            }
+                                            else {
                                                 ?>
-                                                <input class="minimal" type="checkbox" checked name="hi[]" value="<?php echo $checklist_row['id'];?>"><?php echo $checklist_row['id'];?><?php echo $checklist_row['content'];?><br>
+                                                <input class="minimal" type="checkbox" checked name="hi[]" value="<?php echo $checklist_row['id'];?>"><?php echo $checklist_row['content'];?><br>
                                                 <?php
                                             }
 

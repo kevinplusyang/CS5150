@@ -38,15 +38,18 @@
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3>
+                            <p>
+                                Employees number in System
+                            </p>
+
+                            <h2>
                                 <?php
                                 $number_result = mysql_query("select count(*) from employee;");
                                 $number_row = mysql_fetch_array($number_result);
                                 echo $number_row['count(*)'];
                                 ?>
-                            </h3>
 
-                            <p>Employees number in System</p>
+                            </h2>
                         </div>
                         <div class="icon">
                             <i class="fa fa-child"></i>
@@ -61,13 +64,14 @@
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3> <?php
+                            <p>Supervisor number in System</p>
+                            <h2> <?php
                                 $number_result = mysql_query("select count(*) from worksIn where departmentId = '4';");
                                 $number_row = mysql_fetch_array($number_result);
                                 echo $number_row['count(*)'];
-                                ?></h3>
+                                ?></h2>
 
-                            <p>Supervisor number in System</p>
+
                         </div>
                         <div class="icon">
                             <i class="fa fa-users"></i>
@@ -84,15 +88,16 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>
+                            <p>Entering Employee Number</p>
+                            <h2>
                                 <?php
                                 $number_result = mysql_query("select count(*) from employee where status = 'entering';");
                                 $number_row = mysql_fetch_array($number_result);
                                 echo $number_row['count(*)'];
                                 ?>
-                            </h3>
+                            </h2>
 
-                            <p>Entering Employee Number</p>
+
                         </div>
                         <div class="icon">
                             <i class="glyphicon glyphicon-log-in"></i>
@@ -111,15 +116,16 @@
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>
+                            <p>Exiting Employee Number</p>
+                            <h2>
                                 <?php
                                 $number_result = mysql_query("select count(*) from employee where status = 'exitingVisable' or status = 'exitingInvisable';");
                                 $number_row = mysql_fetch_array($number_result);
                                 echo $number_row['count(*)'];
                                 ?>
-                            </h3>
+                            </h2>
 
-                            <p>Exiting Employee Number</p>
+
                         </div>
                         <div class="icon">
                             <i class="glyphicon glyphicon-log-out"></i>

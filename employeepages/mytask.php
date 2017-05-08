@@ -100,7 +100,7 @@ require_once "../dbaccess.php";
 
                                     <div class="box-body" >
 
-                                        <?
+                                        <?php
 
                                         $checklist_result = mysql_query("select * from checklist_employee_exit_entry;");
                                         while ($checklist_row = mysql_fetch_array($checklist_result)) {

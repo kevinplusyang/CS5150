@@ -34,7 +34,7 @@ require_once "../dbaccess.php";
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Just Created Employees (Needs to start entering process)</h3>
+                            <h3 class="box-title">Just Created (Need to being onboarding)</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                 </button>
@@ -78,11 +78,11 @@ require_once "../dbaccess.php";
                                             <?php
                                             if ($employee_row['status'] == "entering") {
                                                 ?>
-                                                <span class="label label-warning">In Entering Process</span>
+                                                <span class="label label-warning">In onboarding Process</span>
                                                 <?php
                                             } elseif ($employee_row['status'] == "created") {
                                                 ?>
-                                                <span class="label label-info">Just Created (Need to Start Entering Process)</span>
+                                                <span class="label label-info">Just Created (Need to being onboarding)</span>
                                                 <?php
                                             }  elseif ($employee_row['status'] == "stable") {
                                                 ?>
@@ -91,12 +91,12 @@ require_once "../dbaccess.php";
 
                                             }  elseif ($employee_row['status'] == "exitingVisable") {
                                                 ?>
-                                                <span class="label label-warning">In Exiting Process Employee Aware</span>
+                                                <span class="label label-warning">In offboarding process, employee notified</span>
                                                 <?php
 
                                             }  elseif ($employee_row['status'] == "exitingInvisable") {
                                                 ?>
-                                                <span class="label label-warning">In Exiting Process Employee Doesn't Aware</span>
+                                                <span class="label label-warning">In offboarding process, employee not notified</span>
                                                 <?php
 
                                             }
@@ -180,11 +180,11 @@ require_once "../dbaccess.php";
                                             <?php
                                             if ($employee_row['status'] == "entering") {
                                                 ?>
-                                                <span class="label label-warning">In Entering Process</span>
+                                                <span class="label label-warning">In onboarding Process</span>
                                                 <?php
                                             } elseif ($employee_row['status'] == "created") {
                                                 ?>
-                                                <span class="label label-info">Just Created (Need to Start Entering Process)</span>
+                                                <span class="label label-info">Just Created (Need to being onboarding)</span>
                                                 <?php
                                             }  elseif ($employee_row['status'] == "stable") {
                                                 ?>
@@ -193,12 +193,12 @@ require_once "../dbaccess.php";
 
                                             }  elseif ($employee_row['status'] == "exitingVisable") {
                                                 ?>
-                                                <span class="label label-warning">In Exiting Process Employee Aware</span>
+                                                <span class="label label-warning">In offboarding process, employee notified</span>
                                                 <?php
 
                                             }  elseif ($employee_row['status'] == "exitingInvisable") {
                                                 ?>
-                                                <span class="label label-warning">In Exiting Process Employee Doesn't Aware</span>
+                                                <span class="label label-warning">In offboarding process, employee not notified</span>
                                                 <?php
 
                                             }
@@ -282,11 +282,11 @@ require_once "../dbaccess.php";
                                             <?php
                                             if ($employee_row['status'] == "entering") {
                                                 ?>
-                                                <span class="label label-warning">In Entering Process</span>
+                                                <span class="label label-warning">In onboarding Process</span>
                                                 <?php
                                             } elseif ($employee_row['status'] == "created") {
                                                 ?>
-                                                <span class="label label-info">Just Created (Need to Start Entering Process)</span>
+                                                <span class="label label-info">Just Created (Need to being onboarding)</span>
                                                 <?php
                                             }  elseif ($employee_row['status'] == "stable") {
                                                 ?>
@@ -295,12 +295,12 @@ require_once "../dbaccess.php";
 
                                             }  elseif ($employee_row['status'] == "exitingVisable") {
                                                 ?>
-                                                <span class="label label-warning">In Exiting Process Employee Aware</span>
+                                                <span class="label label-warning">In offboarding process, employee notified</span>
                                                 <?php
 
                                             }  elseif ($employee_row['status'] == "exitingInvisable") {
                                                 ?>
-                                                <span class="label label-warning">In Exiting Process Employee Doesn't Aware</span>
+                                                <span class="label label-warning">In offboarding process, employee not notified</span>
                                                 <?php
 
                                             }
@@ -384,11 +384,11 @@ require_once "../dbaccess.php";
                                             <?php
                                             if ($employee_row['status'] == "entering") {
                                                 ?>
-                                                <span class="label label-warning">In Entering Process</span>
+                                                <span class="label label-warning">In onboarding Process</span>
                                                 <?php
                                             } elseif ($employee_row['status'] == "created") {
                                                 ?>
-                                                <span class="label label-info">Just Created (Need to Start Entering Process)</span>
+                                                <span class="label label-info">Just Created (Need to being onboarding)</span>
                                                 <?php
                                             }  elseif ($employee_row['status'] == "stable") {
                                                 ?>
@@ -397,12 +397,12 @@ require_once "../dbaccess.php";
 
                                             }  elseif ($employee_row['status'] == "exitingVisable") {
                                                 ?>
-                                                <span class="label label-warning">In Exiting Process Employee Aware</span>
+                                                <span class="label label-warning">In offboarding process, employee notified</span>
                                                 <?php
 
                                             }  elseif ($employee_row['status'] == "exitingInvisable") {
                                                 ?>
-                                                <span class="label label-warning">In Exiting Process Employee Doesn't Aware</span>
+                                                <span class="label label-warning">In offboarding process, employee not notified</span>
                                                 <?php
 
                                             }
@@ -486,11 +486,11 @@ require_once "../dbaccess.php";
                                             <?php
                                             if ($employee_row['status'] == "entering") {
                                                 ?>
-                                                <span class="label label-warning">In Entering Process</span>
+                                                <span class="label label-warning">In onboarding Process</span>
                                                 <?php
                                             } elseif ($employee_row['status'] == "created") {
                                                 ?>
-                                                <span class="label label-info">Just Created (Need to Start Entering Process)</span>
+                                                <span class="label label-info">Just Created (Need to being onboarding)</span>
                                                 <?php
                                             }  elseif ($employee_row['status'] == "stable") {
                                                 ?>
@@ -499,12 +499,12 @@ require_once "../dbaccess.php";
 
                                             }  elseif ($employee_row['status'] == "exitingVisable") {
                                                 ?>
-                                                <span class="label label-warning">In Exiting Process Employee Aware</span>
+                                                <span class="label label-warning">In offboarding process, employee notified</span>
                                                 <?php
 
                                             }  elseif ($employee_row['status'] == "exitingInvisable") {
                                                 ?>
-                                                <span class="label label-warning">In Exiting Process Employee Doesn't Aware</span>
+                                                <span class="label label-warning">In offboarding process, employee not notified</span>
                                                 <?php
 
                                             }

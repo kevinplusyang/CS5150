@@ -39,7 +39,7 @@
                     <div class="small-box bg-aqua">
                         <div class="inner">
                             <p>
-                                Employees number in System
+                                Employees in system
                             </p>
 
                             <h2>
@@ -64,7 +64,7 @@
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <p>Supervisor number in System</p>
+                            <p>Supervisor in System</p>
                             <h2> <?php
                                 $number_result = mysql_query("select count(*) from worksIn where departmentId = '4';");
                                 $number_row = mysql_fetch_array($number_result);
@@ -88,7 +88,7 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <p>Entering Employee Number</p>
+                            <p>Onboarding employees</p>
                             <h2>
                                 <?php
                                 $number_result = mysql_query("select count(*) from employee where status = 'entering';");
@@ -116,7 +116,7 @@
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <p>Exiting Employee Number</p>
+                            <p>Offboarding employees</p>
                             <h2>
                                 <?php
                                 $number_result = mysql_query("select count(*) from employee where status = 'exitingVisable' or status = 'exitingInvisable';");
@@ -138,6 +138,31 @@
 
             </div>
             <!-- /.row -->
+
+            <div class="row">
+
+                <a href="hrenroll.php">
+                    <div class="col-md-6">
+                        <div class="callout callout-info">
+                            <h4>Enroll a new Employee</h4>
+
+                            <p>Help a new employee finish onboarding process</p>
+                        </div>
+                    </div>
+                </a>
+
+
+                <a href="leaveemployee.php">
+                    <div class="col-md-6">
+                        <div class="callout callout-success">
+                            <h4>Exit an employee</h4>
+
+                            <p>Help a new employee finish offboarding process</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
         </section>
         <!-- /.content -->
     </div>
